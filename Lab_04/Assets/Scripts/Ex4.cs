@@ -7,6 +7,8 @@ public class Ex4 : MonoBehaviour
     // ruch wokó³ osi Y bêdzie wykonywany na obiekcie gracza, wiêc
     // potrzebna nam referencja do niego (konkretnie jego komponentu Transform)
     public Transform player;
+    public float sensitivity = 200f;
+    private float mouseYMove = 0;
     void Start()
     {
         // zablokowanie kursora na œrodku ekranu, oraz ukrycie kursora
@@ -19,19 +21,34 @@ public class Ex4 : MonoBehaviour
     void Update()
     {
         // pobieramy wartoœci dla obu osi ruchu myszy
-        float mouseXMove = Input.GetAxis("Mouse X") * Time.deltaTime;
-        float mouseYMove = Input.GetAxis("Mouse Y") * Time.deltaTime * 200;
-        float limit = 0.7070027f;
-
-        if (transform.position.x < limit && mouseYMove > 0)
+        float mouseXMove = Input.GetAxis("Mouse X") * Time.deltaTime * sensitivity;
+        mouseYMove = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity;
+        //Debug.Log(mouseYMove + " " + transform.rotation.eulerAngles.x);
+        player.Rotate(Vector3.up * mouseXMove);
+        if(mouseYMove>0 && ((transform.rotation.eulerAngles.x<=90)||(transform.rotation.eulerAngles.x > 315)))
         {
-            Debug.Log(transform.rotation.x + " " + limit + " " + (transform.position.x < limit).ToString());
-            transform.Rotate(new Vector3(mouseYMove, 0f, 0f), Space.Self);
+            transform.Rotate(new Vector3(-mouseYMove, 0f, 0f),Space.Self);
+            if (transform.rotation.eulerAngles.x <315)
+            {
+                //transform.eulerAngles = new Vector3(315, transform.eulerAngles.y, transform.eulerAngles.z);
+            }
         }
-        else if (transform.position.x > -limit && mouseYMove < 0)
+        else if(mouseYMove < 0 && ((transform.rotation.eulerAngles.x < 45) || (transform.rotation.eulerAngles.x > 270)))
         {
-            Debug.Log(transform.rotation.x + " " + limit + " " + (transform.position.x < -limit).ToString());
-            transform.Rotate(new Vector3(mouseYMove, 0f, 0f), Space.Self);
-        }  
+            transform.Rotate(new Vector3(-mouseYMove, 0f, 0f),Space.Self);
+            if (transform.rotation.eulerAngles.x >= 45)
+            {
+                //transform.eulerAngles = new Vector3(45, transform.eulerAngles.y, transform.eulerAngles.z);
+            }
+        }
+
+    }
+
+    public static float Wrap(float value, float max, float min)
+    {
+        max -= min;
+        if (max == 0)
+            return min;
+        return value - max * (float)Mathf.Floor((value - min) / max);
     }
 }

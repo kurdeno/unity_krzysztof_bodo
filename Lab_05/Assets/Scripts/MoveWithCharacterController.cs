@@ -10,6 +10,7 @@ public class MoveWithCharacterController : MonoBehaviour
     private float playerSpeed = 8.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    private float pushPower = 2.0f;
 
     private void Start()
     {
@@ -40,5 +41,34 @@ public class MoveWithCharacterController : MonoBehaviour
         // okazuje siê, ¿e jest to zbyt wolne opadanie, wiêc zastosowano g * t-kwadrat
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+
+        // no rigidbody
+        if (body == null || body.isKinematic)
+        {
+
+            return;
+        }
+        
+        // We dont want to push objects below us
+        if (hit.moveDirection.y < -0.3)
+       {
+           //Debug.Log("XD");
+            return;
+        }
+
+        // Calculate push direction from move direction,
+        // we only push objects to the sides never up and down
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+
+        // If you know how fast your character is trying to move,
+        // then you can also multiply the push velocity by that.
+
+        // Apply the push
+        body.velocity = pushDir * pushPower;
     }
 }
