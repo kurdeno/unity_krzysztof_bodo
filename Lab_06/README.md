@@ -16,4 +16,11 @@ Najlepsze modele wygenerowane w Meshroomie wyglądają tak:
 2 ostatnie modele powstały z tej samej serii zdjęć, gdzie jednym razem połowa zdjęć nie została poprawnie powiązana z resztą, a drugim razem 2/3 zostały odrzucone.
 Na wygenerowanie lepszej wersji lub obróbke jednej z nich w blenderze zabrakło mi czasu. W folderach zawarłem wygenerowaną rękę nr 3 i 4.
 
+Wykonałem także model głośnika :
+
+![Speaker-Wzór](https://user-images.githubusercontent.com/46341978/142491309-8a23a187-792c-473e-99fd-531b8e6e4a50.jpg)
+
+=> 
+
+![SpeakerAterMeshroom](https://user-images.githubusercontent.com/46341978/142491401-6f497ace-90e7-46b7-97f3-2ff259360ad1.png)
 
