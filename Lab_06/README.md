@@ -1,4 +1,6 @@
 Próbowałem wykonać model robotycznej dłoni wyglądający tak:
+
+
 ![WzórRęki-Tył](https://user-images.githubusercontent.com/46341978/142470828-0cd94395-79ab-4e9e-a709-f569ffb2ef9c.jpg)
 ![WzórRęki-Przód](https://user-images.githubusercontent.com/46341978/142470835-36d3d7f1-e7f7-4131-b0bc-c6a0d9470579.jpg)
 
