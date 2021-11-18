@@ -13,6 +13,7 @@ Najlepsze modele wygenerowane w Meshroomie wyglądają tak:
 ![Hand3AterMeshroom](https://user-images.githubusercontent.com/46341978/142470230-7a8edd94-6bad-4c72-a26d-a20f64f16e87.png)
 ![Hand4AterMeshroom](https://user-images.githubusercontent.com/46341978/142470214-ad0f9079-d913-445b-a8cb-76559c5f4c6b.png)
 
+2 ostatnie modele powstały z tej samej serii zdjęć, gdzie jednym razem połowa zdjęć nie została poprawnie powiązana z resztą, a drugim razem 2/3 zostały odrzucone.
 Na wygenerowanie lepszej wersji lub obróbke jednej z nich w blenderze zabrakło mi czasu. W folderach zawarłem wygenerowaną rękę nr 3 i 4.
 
 
