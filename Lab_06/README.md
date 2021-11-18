@@ -18,7 +18,7 @@ Na wygenerowanie lepszej wersji lub obróbke jednej z nich w blenderze zabrakło
 
 Wykonałem także model głośnika :
 
-![Speaker-Wzór](https://user-images.githubusercontent.com/46341978/142491309-8a23a187-792c-473e-99fd-531b8e6e4a50.jpg)
+![Speaker-Wzór](https://user-images.githubusercontent.com/46341978/142491509-2b7bd5a8-7440-420e-9157-f109815318f9.jpg)
 
 => 
 
