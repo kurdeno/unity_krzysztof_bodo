@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 188870028}
   - component: {fileID: 188870027}
   - component: {fileID: 188870026}
-  - component: {fileID: 188870025}
   - component: {fileID: 188870024}
+  - component: {fileID: 188870025}
   - component: {fileID: 188870023}
   m_Layer: 0
   m_Name: Platform
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 188870022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4fdb739396216d43b4749534814b94a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b142edaf9b308b4b84c0b4927db4e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   elevatorSpeed: 2
