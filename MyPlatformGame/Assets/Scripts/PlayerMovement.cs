@@ -13,7 +13,14 @@ public class PlayerMovement : MonoBehaviour {
 
 	float horizontalMove = 0f;
 	bool jump = false;
-	
+	public HealthScript health;
+	public GameObject healthObj;
+
+	void Strart()
+    {
+		healthObj = GameObject.Find("Health");
+		health = healthObj.GetComponent<HealthScript>();
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -29,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		if(transform.position.y<=-8.0f)
         {
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			health.DeleteLife();
 		}
 	}
 

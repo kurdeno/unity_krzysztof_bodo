@@ -5,9 +5,9 @@ using UnityEngine;
 public class CollectiblesController : MonoBehaviour
 {
 
-    public ScoreScript scoreScript;
-    public GameObject scoreText;
-    public AudioSource collectSound;
+    private ScoreScript scoreScript;
+    private GameObject scoreText;
+    private AudioSource collectSound;
 
     public void Start()
     {
