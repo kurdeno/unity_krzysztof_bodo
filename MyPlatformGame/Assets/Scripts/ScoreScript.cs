@@ -9,6 +9,7 @@ public class ScoreScript : MonoBehaviour
 {
     public int scoreValue = 0;
     Text score;
+    public int winScore = 200;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         score.text = "Score: " + scoreValue;
-        if(scoreValue>=150)
+        if(scoreValue>= winScore)
         {
             if(SceneManager.GetActiveScene().buildIndex + 1 == 3)
             {
