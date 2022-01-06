@@ -3,58 +3,40 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
-	[SerializeField] private float m_JumpForce = 400f;							
-	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	
-	[SerializeField] private bool m_AirControl = false;							
-	[SerializeField] private LayerMask m_WhatIsGround;							
-	[SerializeField] private Transform m_GroundCheck;							
+	[SerializeField] private float JumpForce = 400f;							
+	[Range(0, .3f)] [SerializeField] private float MovementSmoothing = .05f;	
+	[SerializeField] private bool AirControl = false;							
+	[SerializeField] private LayerMask WhatIsGround;							
+	[SerializeField] private Transform GroundCheck;							
 
-	const float k_GroundedRadius = .2f; 
-	private bool m_Grounded;           
-	private Rigidbody2D m_Rigidbody2D;
-	private bool m_FacingRight = true;  
-	private Vector3 m_Velocity = Vector3.zero;
+	const float GroundedRadius = .2f;
+	private bool isGrounded = true;           
+	private Rigidbody2D rigidbody2D;
+	private bool FacingRight = true;  
+	private Vector3 velocity = Vector3.zero;
 	public Animator animator;
-
-	[Header("Events")]
-	[Space]
-
-	public UnityEvent OnLandEvent;
-
-	[System.Serializable]
-	public class BoolEvent : UnityEvent<bool> { }
+	private bool jumping = false;
+	private int groundCheckDelay = 1;
+	private int timeAfterJump = 0;
 
 
 	private void Awake()
 	{
-		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-
-		if (OnLandEvent == null)
-			OnLandEvent = new UnityEvent();
+		rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
 	private void FixedUpdate()
 	{
-		bool wasGrounded = m_Grounded;
-		m_Grounded = false;
-
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-		for (int i = 0; i < colliders.Length; i++)
-		{
-			if (colliders[i].gameObject != gameObject)
-			{
-				m_Grounded = true;
-				
-				if (!wasGrounded)
-                {
-					animator.SetBool("IsJumping", false);
-				}
-			}
+		if (jumping && !isGrounded) { 
+			timeAfterJump++;
 		}
-		if(!m_Grounded)
+		if(timeAfterJump>groundCheckDelay && jumping)
         {
-			animator.SetBool("IsJumping", true);
-
+			isGrounded = Grounded();
+        }
+		if(!jumping)
+        {
+			isGrounded = Grounded();
 		}
 	}
 
@@ -62,33 +44,48 @@ public class CharacterController2D : MonoBehaviour
 	public void Move(float move, bool jump)
 	{
 
-		if (m_Grounded || m_AirControl)
+		if (isGrounded || AirControl)
 		{
-			Vector2 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+			if(isGrounded && jumping)
+            {
+				jumping = false;
+				animator.SetBool("IsJumping", false);
+			}
+			Vector2 targetVelocity = new Vector2(move * 10f, rigidbody2D.velocity.y);
 
-			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+			rigidbody2D.velocity = Vector3.SmoothDamp(rigidbody2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
 
-			if (move > 0 && !m_FacingRight)
+			if (move > 0 && !FacingRight)
 			{
 				Flip();
 			}
-			else if (move < 0 && m_FacingRight)
+			else if (move < 0 && FacingRight)
 			{
 				Flip();
 			}
 		}
-		if (m_Grounded && jump)
+		if (isGrounded && jump)
 		{
-			m_Grounded = false;
-			animator.SetBool("IsJumping", true);
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			isGrounded = false;
+			timeAfterJump = 0;
+			jumping = true;
+			rigidbody2D.AddForce(new Vector2(0f, JumpForce));
 		}
 	}
 
+	
 
+	bool Grounded()
+    {
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
+		if (colliders.Length > 0)
+			return true;
+		else
+			return false;
+	}
 	private void Flip()
 	{
-		m_FacingRight = !m_FacingRight;
+		FacingRight = !FacingRight;
 
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;

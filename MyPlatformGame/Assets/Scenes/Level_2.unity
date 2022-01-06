@@ -525,8 +525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 700, y: 285.82437}
+  m_AnchoredPosition: {x: 0, y: -1.2}
+  m_SizeDelta: {x: 700, y: 467.07132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &162592641
 MonoBehaviour:
@@ -1139,29 +1139,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae167e99051e1a744b7224940a924167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 700
-  m_MovementSmoothing: 0.05
-  m_AirControl: 1
-  m_WhatIsGround:
+  JumpForce: 700
+  MovementSmoothing: 0.05
+  AirControl: 1
+  WhatIsGround:
     serializedVersion: 2
     m_Bits: 4608
-  m_GroundCheck: {fileID: 333272605}
-  m_CeilingCheck: {fileID: 1684332246}
+  GroundCheck: {fileID: 333272605}
   animator: {fileID: 296805462}
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 296805465}
-        m_MethodName: OnLanding
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &296805467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,7 +1295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333272604}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.72, z: 0}
+  m_LocalPosition: {x: 0, y: -3.06, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 296805460}
@@ -2030,7 +2015,6 @@ MonoBehaviour:
   controller: {fileID: 1027354920}
   animator: {fileID: 1027354924}
   runSpeed: 30
-  walkSpeed: 20
 --- !u!114 &1027354920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2043,14 +2027,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9129da327932ea41a5201ce2a146579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 350
   m_MovementSmoothing: 0.05
-  m_AirControl: 0
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 0
-  m_GroundCheck: {fileID: 0}
-  m_delayGroundCheck: 0.25
   animator: {fileID: 1027354924}
   A: 80
   B: 92
@@ -2255,7 +2235,6 @@ MonoBehaviour:
   controller: {fileID: 1034829228}
   animator: {fileID: 1034829232}
   runSpeed: 30
-  walkSpeed: 20
 --- !u!114 &1034829228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2268,14 +2247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9129da327932ea41a5201ce2a146579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 350
   m_MovementSmoothing: 0.05
-  m_AirControl: 0
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 0
-  m_GroundCheck: {fileID: 0}
-  m_delayGroundCheck: 0.25
   animator: {fileID: 1034829232}
   A: 30
   B: 42
@@ -12987,14 +12962,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9129da327932ea41a5201ce2a146579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 350
   m_MovementSmoothing: 0.05
-  m_AirControl: 0
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 0
-  m_GroundCheck: {fileID: 0}
-  m_delayGroundCheck: 0.25
   animator: {fileID: 1905036972}
   A: 93
   B: 100
@@ -13013,7 +12984,6 @@ MonoBehaviour:
   controller: {fileID: 1905036978}
   animator: {fileID: 1905036972}
   runSpeed: 30
-  walkSpeed: 20
 --- !u!1 &1907737821
 GameObject:
   m_ObjectHideFlags: 0
