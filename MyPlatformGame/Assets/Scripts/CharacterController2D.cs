@@ -8,11 +8,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private bool m_AirControl = false;							
 	[SerializeField] private LayerMask m_WhatIsGround;							
 	[SerializeField] private Transform m_GroundCheck;							
-	[SerializeField] private Transform m_CeilingCheck;							
 
 	const float k_GroundedRadius = .2f; 
 	private bool m_Grounded;           
-	const float k_CeilingRadius = .2f; 
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  
 	private Vector3 m_Velocity = Vector3.zero;
@@ -52,6 +50,11 @@ public class CharacterController2D : MonoBehaviour
 					animator.SetBool("IsJumping", false);
 				}
 			}
+		}
+		if(!m_Grounded)
+        {
+			animator.SetBool("IsJumping", true);
+
 		}
 	}
 

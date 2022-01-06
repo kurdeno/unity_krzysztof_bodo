@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour {
 		health = healthObj.GetComponent<HealthScript>();
 	}
 
-	// Update is called once per frame
 	void Update () {
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -46,7 +45,6 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
-		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
 		jump = false;
 	}

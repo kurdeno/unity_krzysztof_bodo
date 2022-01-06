@@ -5,9 +5,6 @@ public class EnemyMovement : MonoBehaviour
     public EnemyController controller;
     public Animator animator;
     public float runSpeed = 30f;
-    public float walkSpeed = 20f;
-    bool jump = false;
-    string m_side = "right";
     float horizontalMove = 0f;
     float move = 10;
 
