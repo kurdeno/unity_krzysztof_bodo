@@ -56,11 +56,11 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool jump)
 	{
-
 		if (m_Grounded || m_AirControl)
 		{
 
-			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+			Vector2 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
 			if (move > 0 && !m_FacingRight)
