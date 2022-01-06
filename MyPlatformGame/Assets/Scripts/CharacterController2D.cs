@@ -16,7 +16,7 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  
 	private Vector3 m_Velocity = Vector3.zero;
-
+	public Animator animator;
 
 	[Header("Events")]
 	[Space]
@@ -40,15 +40,17 @@ public class CharacterController2D : MonoBehaviour
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
-		
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
 		for (int i = 0; i < colliders.Length; i++)
 		{
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
+				
 				if (!wasGrounded)
-					OnLandEvent.Invoke();
+                {
+					animator.SetBool("IsJumping", false);
+				}
 			}
 		}
 	}
@@ -56,9 +58,9 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool jump)
 	{
+
 		if (m_Grounded || m_AirControl)
 		{
-
 			Vector2 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
 
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
@@ -75,6 +77,7 @@ public class CharacterController2D : MonoBehaviour
 		if (m_Grounded && jump)
 		{
 			m_Grounded = false;
+			animator.SetBool("IsJumping", true);
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
 	}

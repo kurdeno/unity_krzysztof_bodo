@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetButtonDown("Jump"))
 		{
 			jump = true;
-			animator.SetBool("IsJumping", true);
 		}
 		if(transform.position.y<=-8.0f)
         {

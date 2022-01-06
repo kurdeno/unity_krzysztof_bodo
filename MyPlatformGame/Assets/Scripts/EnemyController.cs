@@ -121,7 +121,6 @@ public class EnemyController : MonoBehaviour
 		{
 			isDying = true;
 			animator.SetBool("IsDying", true);
-			Debug.Log("XDDD");
 			Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + delay);
 				scoreScript.scoreValue += 15;
 		}

@@ -541,7 +541,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 43.515266, y: 7.5}
+  m_Size: {x: 51.86663, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -555,7 +555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254506305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.6, y: 4.8, z: 10}
+  m_LocalPosition: {x: 45.77, y: 4.8, z: 10}
   m_LocalScale: {x: 3.9446087, y: 6.734815, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1602,7 +1602,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 43.515266, y: 7.5}
+  m_Size: {x: 51.866634, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1616,7 +1616,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688575136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.6, y: 4.8, z: 5}
+  m_LocalPosition: {x: 45.77, y: 4.8, z: 5}
   m_LocalScale: {x: 3.9446087, y: 6.734815, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14728,9 +14728,10 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4608
   m_GroundCheck: {fileID: 255572896}
   m_CeilingCheck: {fileID: 524028237}
+  animator: {fileID: 1950333370}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
