@@ -7,6 +7,8 @@ public class BrickController : MonoBehaviour
 	// Start is called before the first frame update
 
 	public GameObject coinPrefab;
+	public Sprite newSprite;
+	public SpriteRenderer spriteRenderer;
 
 	private int coinCounter = 0;
 	public int maxCoinNumber = 3;
@@ -19,6 +21,10 @@ public class BrickController : MonoBehaviour
 			var coin = Instantiate(coinPrefab, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
 			var coins = GameObject.Find("Collectables");
 			coin.transform.parent = coins.transform;
+			if(coinCounter==3)
+            {
+				spriteRenderer.sprite = newSprite;
+			}
 		}
 	}
 }

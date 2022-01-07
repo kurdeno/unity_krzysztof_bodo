@@ -5,11 +5,13 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  
-	[SerializeField] private LayerMask m_WhatIsGround;                         
+	[SerializeField] private LayerMask m_WhatIsGround;
+	[SerializeField] private Transform HitCheck;
+	[SerializeField] private LayerMask WhatIsPlayer;
+	[SerializeField] private HealthScript Health;
+	
 	public Animator animator;
-
-	const float k_GroundedRadius = .2f; 
-	private bool m_Grounded;            
+	const float HitRadius = .2f;
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  
 	private Vector3 m_Velocity = Vector3.zero;
@@ -29,6 +31,15 @@ public class EnemyController : MonoBehaviour
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		scoreText = GameObject.Find("ScoreText");
 		scoreScript = scoreText.GetComponent<ScoreScript>();
+	}
+	public void Update()
+    {
+
+		if (CheckIfHit() && !isDying)
+		{
+			Health.DeleteLife();
+		}
+
 	}
 
 	public void Move(float move)
@@ -113,5 +124,14 @@ public class EnemyController : MonoBehaviour
 			Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + delay);
 				scoreScript.scoreValue += 15;
 		}
+	}
+
+	public bool CheckIfHit()
+	{
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(HitCheck.position, HitRadius, WhatIsPlayer);
+		if (colliders.Length > 0)
+			return true;
+		else
+			return false;
 	}
 }

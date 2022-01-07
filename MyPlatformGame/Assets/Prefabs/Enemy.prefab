@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2425387349871186493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63538947352554663}
+  m_Layer: 12
+  m_Name: HitCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &63538947352554663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2425387349871186493}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8199945, y: 0, z: 0}
+  m_LocalScale: {x: 1.6666665, y: 1.6666665, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7043391995469421403}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7043391995469421402
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,7 +64,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 63538947352554663}
   m_Father: {fileID: 7043391996092705880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -198,14 +229,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9129da327932ea41a5201ce2a146579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 350
   m_MovementSmoothing: 0.05
-  m_AirControl: 0
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 0
-  m_GroundCheck: {fileID: 0}
-  m_delayGroundCheck: 0.25
   animator: {fileID: 7043391995469421404}
   A: 93
   B: 100
@@ -221,10 +248,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e2013cebabf194ebbb345055d72f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HitCheck: {fileID: 0}
+  WhatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
   controller: {fileID: 7043391995469421378}
   animator: {fileID: 7043391995469421404}
   runSpeed: 30
-  walkSpeed: 20
 --- !u!1 &7043391996092705879
 GameObject:
   m_ObjectHideFlags: 0
